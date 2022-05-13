@@ -1,0 +1,119 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f3f3f3;
+    font-family: 'Poppins',sans-serif;
+}
+
+nav {
+    background-color: yellow;
+}
+
+.meals {
+    padding: 0;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(350px,1fr));
+    grid-gap: 20px 25px;
+}
+
+.heading {
+    background-color: #cb202d;
+    color: #ffffff;
+    margin-bottom: 30px;
+    padding: 120px 0 30px 0;
+    grid-column: 1/-1;
+    text-align: center;
+}
+
+.meal_item_box {
+    display: grid;
+    position: relative;
+    grid-template-rows: auto 1fr;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin: 0 20px;
+}
+
+.meal_item_box img {
+        position: relative;
+        width: 100%;
+        border-radius: 15px 15px 0 0;
+    }
+
+.details {
+    padding: 20px 10px;
+    display: grid;
+    grid-template-rows: auto 1fr 50px;
+    grid-row-gap: 15px;
+}
+
+.details-sub {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.details-sub > h5 {
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+.price {
+    text-align: right;
+}
+
+.details > p {
+    color: #6f6f6f;
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    align-self: stretch;
+}
+
+.details > button {
+    background-color: #cb202d;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    width: 180px;
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:visited {
+    color: white;
+    background-color: transparent;
+}
+
+a:active {
+    color: white;
+    background-color: transparent;
+}
+
+.txt_zardab {
+    font-size: 24px;
+    color: white;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    color: white;
+    background-color: forestgreen;
+    transition: 0.5s;
+}

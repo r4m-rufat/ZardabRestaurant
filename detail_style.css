@@ -1,0 +1,92 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.whole {
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+nav > img {
+    margin-left: 0%;
+}
+
+.split > img {
+    position: fixed;
+    width: 40%;
+    height: 50%;
+    margin: 15px;
+    margin-left: 5%;
+    border-radius: 10px;
+}
+
+.first_line {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 20%;
+}
+
+p {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.split {
+    position: fixed;
+    width: 50%;
+    height: 50%;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.preparation_time {
+    font-size: 18px;
+    color: red;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.meal_price {
+    word-spacing: 3px;
+    color: darkgreen;
+}
+
+.meal_ingredients {
+    color: #6f6f6f;
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    align-self: stretch;
+}
+
+nav {
+    background-color: yellow;
+}
+
+.txt_zardab {
+    font-size: 24px;
+    color: white;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+}

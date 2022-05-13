@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Restaurant.dbo.MEAL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MEAL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MEAL_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="MEAL_PRICE" Type="float" />
+          <Property Name="MEAL_INGREDIENTS" Type="text" />
+          <Property Name="MEAL_IMAGE_URL" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="MEAL_DETAIL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEAL_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="MEAL_INGREDIENTS" Type="text" />
+          <Property Name="MEAL_PREPARATION_TIME" Type="nchar" MaxLength="10" />
+          <Property Name="MEAL_PRICE" Type="float" />
+          <Property Name="MEAL_IMAGE_URL" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="RestaurantModelStoreContainer">
+          <EntitySet Name="MEAL_DETAIL" EntityType="Self.MEAL_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEAL" EntityType="Self.MEAL" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MEAL].[ID] AS [ID], 
+    [MEAL].[MEAL_NAME] AS [MEAL_NAME], 
+    [MEAL].[MEAL_PRICE] AS [MEAL_PRICE], 
+    [MEAL].[MEAL_INGREDIENTS] AS [MEAL_INGREDIENTS], 
+    [MEAL].[MEAL_IMAGE_URL] AS [MEAL_IMAGE_URL]
+    FROM [dbo].[MEAL] AS [MEAL]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MEAL_DETAIL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEAL_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MEAL_INGREDIENTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MEAL_PREPARATION_TIME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MEAL_PRICE" Type="Double" />
+          <Property Name="MEAL_IMAGE_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MEAL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MEAL_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MEAL_PRICE" Type="Double" />
+          <Property Name="MEAL_INGREDIENTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MEAL_IMAGE_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="RestaurantEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MEAL_DETAIL" EntityType="Self.MEAL_DETAIL" />
+          <EntitySet Name="MEALs" EntityType="Self.MEAL" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantEntity">
+          <EntitySetMapping Name="MEAL_DETAIL">
+            <EntityTypeMapping TypeName="RestaurantModel.MEAL_DETAIL">
+              <MappingFragment StoreEntitySet="MEAL_DETAIL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MEAL_NAME" ColumnName="MEAL_NAME" />
+                <ScalarProperty Name="MEAL_INGREDIENTS" ColumnName="MEAL_INGREDIENTS" />
+                <ScalarProperty Name="MEAL_PREPARATION_TIME" ColumnName="MEAL_PREPARATION_TIME" />
+                <ScalarProperty Name="MEAL_PRICE" ColumnName="MEAL_PRICE" />
+                <ScalarProperty Name="MEAL_IMAGE_URL" ColumnName="MEAL_IMAGE_URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEALs">
+            <EntityTypeMapping TypeName="RestaurantModel.MEAL">
+              <MappingFragment StoreEntitySet="MEAL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MEAL_NAME" ColumnName="MEAL_NAME" />
+                <ScalarProperty Name="MEAL_PRICE" ColumnName="MEAL_PRICE" />
+                <ScalarProperty Name="MEAL_INGREDIENTS" ColumnName="MEAL_INGREDIENTS" />
+                <ScalarProperty Name="MEAL_IMAGE_URL" ColumnName="MEAL_IMAGE_URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
